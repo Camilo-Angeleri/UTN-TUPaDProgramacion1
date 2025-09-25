@@ -121,7 +121,91 @@ for i, (min_temp, max_temp) in enumerate(Temperaturas_semana):
 print(F"La mayor amplitud termica se registro el dia {dia_mayoramplitud} con {round(mayor_amplitud,2)}°C ")
 
 # Ejercicio Nº8
+notas = [
+    [8, 9, 7],  # Notas de Camilo
+    [7, 8, 9],  # Notas de Claudio
+    [9, 8, 8],  # Notas de Martina
+    [6, 7, 7],  # Notas de Betiana 
+    [8, 9, 9]   # Notas de Ernestina
+]
+
+estudiantes = ["Ana", "Carlos", "Sofía", "David", "Elena"]
+materias = ["Matemáticas", "Historia", "Ciencias"]
+
+print("Promedio de cada estudiante:")
+for i, estudiante_notas in enumerate(notas):
+    promedio_estudiante = sum(estudiante_notas) / len(estudiante_notas)
+    print(f"- {estudiantes[i]}: {promedio_estudiante:.2f}")
+
+
+print("\nPromedio de cada materia:")
+for i in range(len(materias)):
+    suma_materia = 0
+    for j in range(len(estudiantes)):
+        suma_materia += notas[j][i]
+    promedio_materia = suma_materia / len(estudiantes)
+    print(f"- {materias[i]}: {promedio_materia:.2f}")
 
 # Ejercicio Nº9
+tablero = [['-', '-', '-'],['-', '-', '-'],['-', '-', '-']]
+
+def mostrar_tablero():
+    for fila in tablero:
+        print(" | ".join(fila))
+    print("-" * 9)
+
+print("¡Comienza el juego de Ta-Te-Ti!")
+mostrar_tablero()
+
+for turno in range(9):
+    jugador = "X" if turno % 2 == 0 else "O"
+    print(f"Turno de {jugador}")
+    while True:
+        try:
+            fila = int(input(f"Jugador {jugador}, ingresa la fila (0, 1, 2): "))
+            columna = int(input(f"Jugador {jugador}, ingresa la columna (0, 1, 2): "))
+
+            if not (0 <= fila <= 2 and 0 <= columna <= 2):
+                print("Error: Coordenadas fuera de rango. Inténtalo de nuevo.")
+                continue
+            
+            if tablero[fila][columna] != '-':
+                print("Error: La casilla ya está ocupada. Elige otra.")
+                continue
+
+            break
+        except ValueError:
+            print("Entrada no válida. Por favor, ingresa un número.")
+    
+    tablero[fila][columna] = jugador
+
+    mostrar_tablero()
+
+print("Fin del juego. Ya no hay más jugadas posibles.")
 
 # Ejercicio Nº10
+ventas = [[10, 15, 12, 20, 18, 25, 14],[22, 18, 15, 25, 30, 20, 17],[5, 10, 8, 12, 11, 9, 15],[30, 25, 28, 22, 19, 21, 24]]
+productos = ["Producto A", "Producto B", "Producto C", "Producto D"]
+dias_semana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+
+print("Total de ventas por producto:")
+totales_productos = []
+
+for i, ventas_producto in enumerate(ventas):
+    total = sum(ventas_producto)
+    totales_productos.append(total)
+    print(f"- {productos[i]}: {total} unidades")
+
+totales_por_dia = []
+
+for dia in range(len(dias_semana)):
+    total_dia = 0
+    for producto in range(len(productos)):
+        total_dia += ventas[producto][dia]
+    totales_por_dia.append(total_dia)
+
+dia_mas_ventas_index = totales_por_dia.index(max(totales_por_dia))
+dia_mas_ventas = dias_semana[dia_mas_ventas_index]
+total_dia_mas_ventas = max(totales_por_dia)
+
+print(f"El día con mayores ventas totales fue el {dia_mas_ventas} con {total_dia_mas_ventas} unidades.")
