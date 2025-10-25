@@ -91,8 +91,8 @@ print("Listado de Numeros:", numeros)
 rotacion_num = [numeros[-1]] + numeros[:-1]
 print("Lista rotada:",rotacion_num)
 
-# Ejercicio Nº7Temperaturas_semana = [[25.3, 28.4],[27.3, 32.4],[26.9, 34.5],[27.3, 32.4],[26.3, 31.8],[20.3, 26.4]]
-
+# Ejercicio Nº7
+Temperaturas_semana = [[25.3, 28.4],[27.3, 32.4],[26.9, 34.5],[27.3, 32.4],[26.3, 31.8],[20.3, 26.4]]
 dia_semana= ["lunes","Martes","Miercoles","jueves","viernes","Sabado","Domingo"]
 
 sum_min= 0
